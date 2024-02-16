@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="../css/master.css">
 </head>
 <body>
     <main>
         <header>
-            <h3>Login</h3>
+            <h3>Register</h3>
         </header>
-        <section class="login">
+        <section class="register">
             <menu>
-                <a href="#">LOGIN</a>
-                <a href="register.html">REGISTER</a>
+                <a href="login.html">LOGIN</a>
+                <a href="#">REGISTER</a>
             </menu>
             <form action="dashboard.html">
+                <input type="name" name="name" placeholder="FULL NAME" required>
+                <input type="number" name="phone" placeholder="PHONE NUMBER" required>
                 <input type="email" name="email" placeholder="EMAIL" required>
                 <input type="password" name="password" placeholder="PASSWORD" required>
-                <button type="submit">LOGIN </button>
+                <button type="submit">REGISTER</button>
             </form>
         </section>
     </main>
