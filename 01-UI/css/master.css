@@ -27,9 +27,7 @@ main{
     section.homepage{
         display: flex;
         flex-direction: column;
-        img{
-            
-        }
+        
         a:is(:link, :visited){
             display: flex;
             border-radius: 50px;
@@ -96,6 +94,8 @@ section.edit{
             width: 341px;
             background-color:#83C5BE;
             font-family: 'Pompiere', sans-serif;
+            font-size: 25px;
+            color: #006D77;
       
         }
         input{
@@ -106,9 +106,6 @@ section.edit{
             &::placeholder{
                 color: #006D77;
                 text-transform: uppercase;
-            }
-            &:focus{
-                
             }
             section.register{
                 menu{
@@ -142,6 +139,13 @@ header.nav{
     align-items: center;
     justify-content: space-between;
     width: 400px;
+
+    a:first-of-typ{
+        transition: all 0.2s ease-in;
+        &:hover{
+            transform: translate(-10px);
+        }
+    }
 }
 
 
@@ -155,7 +159,7 @@ header.nav.level-0{
 section.dashboard{
     h1{
         font-size: 24px;
-        color: #000;
+        color: #006D77;
         text-align: center;
         text-transform: uppercase;
         margin: 2.4rem 0;
@@ -178,11 +182,13 @@ section.dashboard{
                     display: flex;
                     align-items: center;
                     gap: 1rem;
-                    color: #000;
+                    color: #fff;
                     text-decoration: none;
+                    font-family: 'Pompiere';
+                    font-size: 25px;
                 }
               
-                
+              
                 a{
                     img{
                         transition: all 0.5s ease-in;
@@ -199,6 +205,10 @@ section.dashboard{
                     }
                 }
             }
+            .pet{
+                background-color: #FFDDD2;
+                color: #E29578;
+              }
         }
     }
 }
@@ -278,6 +288,7 @@ section.show{
         img#upload{
             border-radius: 200px;
             cursor: pointer;
+            object-fit: cover;
             height: 240px;
             border: 2px solid #fff;
             transition: all 0.4s ease-out;
@@ -297,7 +308,7 @@ section.show{
     align-items: center;
     img.photo{
         border-radius: 200px;
-        border: 2px solid #006D77;
+        border: 1px solid #006D77;
     }
     div.info{
         display: grid;
@@ -317,9 +328,87 @@ section.show{
     }
 }
 
-
-
+div.pets{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    article{
+        border-radius: 20px;
+        background-color:#FFDDD2;
+        padding: 16px;
+        width: 160px;
+        header{
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+            img{
+                margin-top: 0;
+                width: 60px;
+            }
+            p{
+                display: flex;
+                flex-direction: column;
+                span:last-child{
+                    font-weight: 300;
+                    font-size: 14px;
+                }
+                font-family: 'Pompiere';
+                
+            }
+        }
     }
+    footer{
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+        a:is(link, :visited){
+            background-color: #E29578;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.4s ease-in;
+            padding: 4px;
+
+        }
+    }
+    a:is(:hover){
+        transform: scale(1.1);
+    }
+    article:nth-child(3n){
+        background-color: #83C5BE;
+    }
+}
+.btn{
+    display: flex;
+        color: #006D77;
+        border: 2px solid #006D77;
+        border-radius: 50px;
+        background-color: #83C5BE;
+        font-size: 32px;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: 400;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+        height: 64px;
+        transition: all 0.4s ease-in;
+        margin-top: 1rem;
+        font-family: 'Pompiere';
+    }
+    .btn:is(:hover){
+        border: 2px solid #006D77;
+        background-color: #83C5BE;
+        cursor: pointer;
+        color: #006D77;
+    }
+
+}
+
+
+    
 
     h1{
         font-family: 'Pompiere';
