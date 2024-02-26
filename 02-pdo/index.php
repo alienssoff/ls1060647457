@@ -140,17 +140,12 @@ $pets = getAllPets($conx);
                     text: "You won't be able to revert this!",
                     icon: "warning",
                     showCancelButton: true,
-                    confirmButtonColor: "#7F5539",
-                    cancelButtonColor: "#B08968",
+                    confirmButtonColor: "#FFDDD2",
+                    cancelButtonColor: "#FFDDD2",
                     confirmButtonText: "Yes, delete it!"
                     }).then((result) => {
                     if (result.isConfirmed) {
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "The user was deleted.",
-                        icon: "success",
-                        confirmButtonColor: "#7F5539",
-                    })
+                    window.location.replace('delete.php?id='+ $id)
                 }                  
             })
         })
