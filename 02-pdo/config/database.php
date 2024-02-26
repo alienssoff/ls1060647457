@@ -26,7 +26,7 @@ function getAllPets($conx){
 }
 
 
-//--------------------------------------
+//-----------------------------------
 // Add pet
 function addpet($conx, $data){
     try {
