@@ -1,19 +1,26 @@
 <?php
 
+
 require "config/app.php";
 require "config/database.php";
+
 
 $pets = getAllPets($conx);
 ?>
 
+
 <?php foreach($pets as $pet):?>
-<div> <?php echo $pet['name'] ?></div>
-<div> <?php echo $pet['breed'] ?></div>
-<div> <?php echo $pet['location'] ?></div>
+
+
 <?php endforeach?>
+
 
 <!DOCTYPE html>
 <html lang="en">
+
+
+
+
 
 
 
@@ -27,7 +34,15 @@ $pets = getAllPets($conx);
 
 
 
+
+
+
+
 </head>
+
+
+
+
 
 
 
@@ -46,33 +61,35 @@ $pets = getAllPets($conx);
         </header>
         <section class="module">
             <h1>MODULE PETS</h1>
-            <a class="add" href="add.html">
+            <a class="add" href="add.php">
                 <img src="<?php echo URLIMGS ."/ico-add.svg" ?>" width="30px" alt="">
-                Add Pet 
+                Add Pet
             </a>
             <table>
                 <tbody>
                 <?php foreach($pets as $pet):?>
                     <tr>
-                        <td><img src="<?php echo URLIMGS ."/ico-pets.svg"?>" alt=""></td>
+                        <td><img src="<?php echo URLIMGS . "/" . $pet['photo'] ?>" alt="Pet"></td>
                         <td>
-                           <span><?php echo $pet['name'] ?></span> 
+                           <span><?php echo $pet['name'] ?></span>
                            <span><?php echo $pet['breed'] ?></span>
                         </td>
                         <td>
-                            <a href="showpets.html" class="show">
+                            <a href="showpets.php?id=<?=$pet['id']?>" class="show">
                                 <img src="<?php echo URLIMGS ."/ico-search.svg"?>" alt="">
                             </a>
-                            <a href="editpets.html" class="edit">
+                            <a href="editpets.php?id=<?=$pet['id']?>" class="edit">
                                 <img src="<?php echo URLIMGS ."/ico-pencil.svg"?>" alt="">
                             </a>
-                            <a href="javascript:;" class="delete">
+                            <a href="javascript:;" class="delete" data-id="<?=$pet['id']?>">
                                 <img src="<?php echo URLIMGS ."/ico-delete.svg" ?>"alt="">
                             </a>
                         </td>
                     </tr>
 
+
 <?php endforeach?>
+
 
                    
                 </tbody>
@@ -82,34 +99,64 @@ $pets = getAllPets($conx);
 
 
 
+
+
+
+
    </main>
 
-<script src="../../js/sweetalert2.js"></script>
-<script src="../../js/jquery-3.7.1.min.js"></script>
+
+<script src="<?php echo URLJS ."/sweetalert2.js" ?>"></script>
+<script src="<?php echo URLJS ."/jquery-3.7.1.min.js" ?>"></script>
 <script>
-  $(document).ready(function () {
-     $('body').on('click', '.delete', function () {
-                Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#FFDDD2",
-        cancelButtonColor: "#E29578",
-        confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
-            confirmButtonColor: "#FFDDD2",
-            icon: "success"
-            });
-        }
-        });     
-            });
-  });
-</script>
+            $(document).ready(function () {
+
+
+
+
+                <?php if(isset($_SESSION['msg'])): ?>
+                        Swal.fire({
+                        position:"top-end",
+                        title: "Congratulations!",
+                        text: "<?php echo $_SESSION['msg'] ?>",
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 5000
+                    })
+                    <?php unset($_SESSION['msg']) ?>
+                    <?php endif ?>
+
+
+
+
+
+
+
+
+                $('body').on('click', '.delete', function () {
+                $id = $(this).attr('data-id')
+                    Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#7F5539",
+                    cancelButtonColor: "#B08968",
+                    confirmButtonText: "Yes, delete it!"
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "The user was deleted.",
+                        icon: "success",
+                        confirmButtonColor: "#7F5539",
+                    })
+                }                  
+            })
+        })
+    })
+        </script>
+
+
 </body>
 </html>
-

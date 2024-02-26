@@ -24,3 +24,24 @@ function getAllPets($conx){
         echo "Error:" . $e->getMessage();
     }
 }
+
+
+//--------------------------------------
+// Add pet
+function addpet($conx, $data){
+    try {
+       $sql = "INSERT INTO pets (name, photo, kind, weight, age, breed, location )
+       VALUES (:name, :photo, :kind, :weight, :age, :breed, :location)";
+       $smt = $conx->prepare($sql);
+
+       if ($smt-> execute($data)){
+        $_SESSION['msg'] = 'The' . $data['name'] . ' pet was added successfully.';
+        return true;
+       } else {
+        return false;
+       }
+    } catch(PDOException $e){
+        echo "Error:" . $e->getMessage();
+    }
+}
+
