@@ -4,7 +4,10 @@
 require "config/app.php";
 require "config/database.php";
 
-
+if(!isset($_SESSION['uid'])){
+    $_SESSION['error'] = "Please login firts to access dashboard";
+    header("location: index.php");
+}
 
 ?>
 
