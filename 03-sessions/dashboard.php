@@ -4,10 +4,14 @@
 require "config/app.php";
 require "config/database.php";
 
+$user = getUser($conx, $_SESSION['uid']);
+
 if(!isset($_SESSION['uid'])){
     $_SESSION['error'] = "Please login firts to access dashboard";
     header("location: index.php");
 }
+
+
 
 ?>
 
@@ -41,12 +45,35 @@ div.menu{
 
 
     a:is(:link, :visited){
-        border: 1px solid #fff;
+        border: 1px solid #E29578;
         border-radius: 50px;
         color: #fff;
         font-size: 2rem;
         padding: 10px 20px;
         text-decoration: none;
+    }
+    a.closem{
+        position: absolute;
+        top: 44px;
+        right: 5px;
+    }
+    nav{
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        img{
+            border: 2px solid #E29578;
+            border-radius: 60%;
+            width: 200px;
+            height: 200px;
+        }
+
+        h4, h5{
+            margin: 0;
+        }
     }
 }
 div.menu.open{
@@ -88,6 +115,10 @@ div.menu.close{
 <div class="menu">
     <a href="javascript:;" class="closem">X</a>
     <nav>
+       
+        <img src="<?=URLIMGS."/". $user['photo']?>"alt="Photo">
+        <h4><?=$user['fullname']?></h4>
+        <h5><?=$user['role']?></h5>
      <a href="close.php">Close Session</a>
     </nav>
 </div>
@@ -95,6 +126,7 @@ div.menu.close{
 <header class="nav level-0">
             <a href="../dashboard.html">
                 <img src="/ico-back.svg" alt="back">
+               
             </a>
             <img src="<?php echo URLIMGS . "/logo.svg" ?>" width="200px" alt="Logo">
            
@@ -102,10 +134,11 @@ div.menu.close{
                 <img src="<?php echo URLIMGS ."/burger.svg" ?>"alt="Hamburguer">
             </a>
         </header>
+        <?php if($_SESSION['urole']== 'Admin'):?>
         <section class="dashboard">
             <h1>Dashboard</h1>
             <menu>
-                <ul>
+         <ul>
                     <li>
                         <a href="#">
                             <img src="<?php echo URLIMGS . "/ico-users.svg"?>" alt="Users">
@@ -129,6 +162,21 @@ div.menu.close{
         </section>
 
 
+<?php elseif ($_SESSION['urole']== 'Custom'): ?>
+    <section class="dashboard">
+            <h1>Dashboard</h1>
+    <menu>
+        <ul>
+            <li>
+                <a href="#">
+                <img src="<?php echo URLIMGS ."/ico-adoptions.svg"?>" alt="Adoptions">
+                Module Adoptions
+                </a>
+            </li>
+        </ul>
+    </menu>
+        </section>
+    <?php endif ?>
    </main>
 
 <script src="<?php echo URLJS ."/sweetalert2.js" ?>"></script>

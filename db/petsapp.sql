@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-02-2024 a las 14:22:31
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Tiempo de generación: 01-03-2024 a las 16:03:53
+-- Versión del servidor: 10.1.21-MariaDB
+-- Versión de PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -36,7 +35,7 @@ CREATE TABLE `pets` (
   `age` int(3) NOT NULL,
   `breed` varchar(32) NOT NULL,
   `location` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `pets`
@@ -62,15 +61,17 @@ CREATE TABLE `users` (
   `photo` varchar(64) DEFAULT 'ico-users.svg',
   `phone` varchar(16) NOT NULL,
   `email` varchar(32) NOT NULL,
-  `password` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `password` varchar(64) NOT NULL,
+  `role` varchar(32) NOT NULL DEFAULT 'Custom'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `document`, `fullname`, `photo`, `phone`, `email`, `password`) VALUES
-(1, 75000001, 'Jeremias Springfield', 'ico-users.svg', '312000001', 'jeremias@gmail.com', '$2y$10$sHH84z4BbzM13FmcQvsBM.Ob8gfkr/M1lLnkolNK4zVPKcfiAdf6C');
+INSERT INTO `users` (`id`, `document`, `fullname`, `photo`, `phone`, `email`, `password`, `role`) VALUES
+(1, 75000001, 'Jeremias Springfield', 'jeremias.png', '312000001', 'jeremias@gmail.com', '$2y$10$sHH84z4BbzM13FmcQvsBM.Ob8gfkr/M1lLnkolNK4zVPKcfiAdf6C', 'Admin'),
+(2, 1060647457, 'William McDougal', '1709303076.jfif', '3002346547', 'william@gmail.com', '$2y$10$swVG4Tb7UsilVOnROC4dWO9qkAyJR/9R8uy4dj9qFMpHS..ZGTmHm', 'Custom');
 
 --
 -- Índices para tablas volcadas
@@ -99,14 +100,11 @@ ALTER TABLE `users`
 --
 ALTER TABLE `pets`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-COMMIT;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
