@@ -23,5 +23,19 @@ class PetSeeder extends Seeder
         $pet->location = "Manizales";
 
         $pet->save();
+
+
+        $pet = new Pet;
+        $pet->name = "Piter";
+        $pet->photo = "piter.jfif";
+        $pet->kind = "Dog";
+        $pet->weight = 10;
+        $pet->age =5;
+        $pet->breed = "Pincher";
+        $pet->location = "Manizales";
+
+        $pet->save();
+
+        
     }
 }
