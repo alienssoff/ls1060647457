@@ -13,4 +13,14 @@ class Adoption extends Model
         'pet-id'
         
     ];
+    
+    //RelationShip: (Pet has one adoption)
+public function user(){
+    return $this->belongsTo('App\Models\User');
+}
+
+public function pet(){
+    return $this->belongsTo('App\Models\Pet');
+}
+
 }

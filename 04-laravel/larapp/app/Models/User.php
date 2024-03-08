@@ -48,4 +48,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    //Relationship: (user has many adoptions)
+public function adoptions(){
+    return $this->hasMany('App\Models\Adoption');
 }
+
+}
+
