@@ -1,4 +1,4 @@
-<x-app-layout>
+{{--<x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
@@ -14,9 +14,78 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-app-layout>--}}
+@extends('layouts.app')
 
-<form action="{{route('logout')}}" method="POST">
-<button>Close</button>
-@csrf
-</form>
+@section('title', 'Dashboard Page - PetsApp')
+
+@section('content')
+
+<div class="menu">
+    <a href="javascript:;" class="closem">
+    </a>
+    <nav>
+        <img src="{{ asset('images') . '/' . Auth::user()->photo }}" alt="Photo">
+        <h4>{{ Auth::user()->fullname }}</h4>
+        <h5>{{ Auth::user()->role }}</h5>
+        <form action="{{ route('logout') }}" method="post">
+            <button class="closes">Log Out</button>
+            @csrf
+        </form>
+    </nav>
+</div>
+
+
+    <header class="nav level-0">
+        <a href="">
+            <img src="{{asset ('images/ico-back.svg')}}" alt="back">
+        </a>
+
+        <img src="{{asset('images/logo.svg')}} " width="200px" alt="Logo">
+       
+        <a href="javascript:;" class="mburger">
+            <img src="{{asset('images/burger.svg')}}" alt="Hamburguer">
+        </a>
+    </header>
+
+
+    <section class="dashboard">
+        <h1>Dashboard</h1>
+        <menu>
+            <ul>
+                <li>
+                    <a href="{{url('users')}}">
+                        <img src="{{asset('images/ico-users.svg')}}" alt="Users">
+                        Module User
+                    </a>
+                </li>
+                <li class="pet">
+                    <a href="{{url('pets')}}">
+                        <img src="{{asset ('images/ico-pets.svg')}}" alt="Pets">
+                        Module Pets
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url('adoptions')}}">
+                        <img src="{{asset('images/ico-adoptions.svg')}} " alt="Adoptions">
+                        Module Adoptions
+                    </a>
+                </li>
+            </ul>
+        </menu>
+    </section>
+
+@endsection
+
+@section('js')
+<script>
+    $(document).ready(function () {
+        $('body').on('click', '.mburger',  function () {
+            $('.menu').addClass('open')
+        })
+        $('body').on('click', '.closem',  function () {
+            $('.menu').removeClass('open')
+        })
+    })
+</script>
+@endsection

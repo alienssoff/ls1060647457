@@ -99,7 +99,7 @@ section.edit{
         font-family: 'Pompiere', sans-serif;
         
 
-        input, button{
+        input,select, button{
             border: none;
             border-radius: 50px;
             padding: 20px;
@@ -110,7 +110,12 @@ section.edit{
             color: #006D77;
       
         }
-        input{
+        select{
+            appearance: none;
+            width: 385px;
+        }
+        
+        input, select{
             background-color: #FFDDD2;
             font-size: 24px;
             font-weight: 400;
@@ -140,6 +145,7 @@ section.edit{
 
                 }
             }
+            
         }
     }
 }
@@ -436,6 +442,73 @@ div.pets{
         background-color: #83C5BE;
         cursor: pointer;
         color: #006D77;
+    }
+
+    div.menu{
+        background-color: #FFDDD2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        position: absolute;
+        top: -2000px;
+        opacity: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 999;
+        justify-content: center;
+        transition: all 0.5s ease-in;
+        min-height: 100vh;
+        width: 100%;
+    
+    
+        a:is(:link, :visited){
+            border: 1px solid #E29578;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 2rem;
+            padding: 10px 20px;
+            text-decoration: none;
+        }
+        a.closem{
+            position: absolute;
+            top: 44px;
+            right: 5px;
+        }
+        nav{
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+    
+            img{
+                border: 2px solid #E29578;
+                border-radius: 60%;
+                width: 200px;
+                height: 200px;
+            }
+    
+            h4, h5{
+                margin: 0;
+            }
+        }
+    }
+    div.menu.open{
+       top: 0;
+       opacity: 1;
+    
+    }
+    
+    .closes{
+        border: none;
+            border-radius: 50px;
+            padding: 20px;
+            width: 341px;
+            background-color:#E29578;
+            font-family: 'Pompiere', sans-serif;
+            font-size: 25px;
+            color: #FFDDD2;
     }
 
 }
