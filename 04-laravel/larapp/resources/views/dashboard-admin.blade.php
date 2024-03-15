@@ -21,6 +21,8 @@
 
 @section('content')
 
+@include('layouts.menuburger')
+
 <div class="menu">
     <a href="javascript:;" class="closem">
     </a>
@@ -50,7 +52,7 @@
 
 
     <section class="dashboard">
-        <h1>Dashboard</h1>
+        <h1>Dashboard: Admin</h1>
         <menu>
             <ul>
                 <li>
