@@ -37,12 +37,16 @@
                     <a href="{{url('users/'.$user->id)}}" class="show">
                         <img src="{{asset ('images/ico-search.svg')}}" alt="">
                     </a>
-                    <a href="{{url('users/edit/'.$user->id)}}" class="edit">
+                    <a href="{{url('users/'.$user->id .'/edit')}}" class="edit">
                         <img src="{{asset ('images/ico-pencil.svg')}}" alt="">
                     </a>
-                    <a href="javascript:;" class="delete" data-id="{{$user->id}}">
-                        <img src="{{asset ('images/ico-delete.svg')}}" alt="">
-                    </a>
+                    <form action="{{url('users/'. $user->id)}}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type="button" class="btn-delete">
+                            <img src="{{asset ('images/ico-delete.svg')}}" alt="Delete">
+                        </button>
+                    </form>
                 </td>
             </tr>
     @endforeach
@@ -60,18 +64,37 @@
 
 @section('js')
     @if (session('message'))
-<script>
-    $(document).ready(function(){
-        Swal.fire({
-            position: "top-end",
-            title: "Great Job!",
-            text: "{{session('message')}}",
-            icon: "success",
-            showConfirmButton: false,
-            timer: 5000
+        <script>
+        $(document).ready(function () {
+            Swal.fire({
+                position: "top-end",
+                title: "Great job!",
+                text: "{{ session('message') }}",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 5000
+            })
         })
-    })
- </script>
- @endif
- @endsection
+        </script>
+    @endif
 
+    <script>
+        $(document).ready(function () {
+            $('body').on('click', '.btn-delete', function () {
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#1f7a8c",
+                    cancelButtonColor: "#1f7a8c",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                        if (result.isConfirmed) {
+                            $(this).parent().submit()
+                        }
+                    })
+                })
+            })
+    </script>
+@endsection

@@ -58,6 +58,7 @@
                         <img src="{{asset('images/ico-users.svg')}}" alt="My Data">
                        <span>My Data</span>
                     </a>
+                </li>
                     <li>
                     <a href="{{url('myadoptios')}}">
                         <img src="{{asset('images/ico-adoptions.svg')}} " alt="My Adoptions">

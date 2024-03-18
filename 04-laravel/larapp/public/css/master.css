@@ -310,6 +310,21 @@ section.module{
                 }
 
             }
+            td:nth-child(3){
+                display: flex;
+              form{
+                margin:0;
+                padding: 0;
+                button{
+                    background:none;
+                    border: none;
+                    display: block;
+                    height: 28px;
+                    width: 32px;
+                    cursor: pointer;
+                   padding: 0;
+            }
+              }
         }
     }
 }
@@ -560,6 +575,7 @@ div.pets{
 
 }
 
+}
 }
     
 
