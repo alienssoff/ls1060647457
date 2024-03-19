@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', 'Show User Page - PetsApp')
+@section('title', 'My Data Page - PetsApp')
 
 @section('content')
 <header class="nav level-2">
-    <a href="{{ url('users') }}">
+    <a href="{{ url('dashboard') }}">
         <img src="{{ asset('images/ico-back.svg') }}" alt="Back">
     </a>
     <img src="{{ asset('images/logo.svg') }}" alt="Logo">
@@ -13,7 +13,7 @@
 </header>
 <section class="module">
     <section class="show">
-        <h1>Show User</h1>
+        <h1>My Data</h1>
         <img src="{{ asset('images/'.$user->photo) }}" class="photo" alt="Photo">
         <p class="role">{{ $user->role }}</p>
         <div class="info">

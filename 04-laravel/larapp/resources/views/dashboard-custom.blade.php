@@ -60,7 +60,7 @@
                     </a>
                 </li>
                     <li>
-                    <a href="{{url('myadoptios')}}">
+                    <a href="{{url('myadoptions')}}">
                         <img src="{{asset('images/ico-adoptions.svg')}} " alt="My Adoptions">
                         <span>My Adoptions</span>
                     </a>

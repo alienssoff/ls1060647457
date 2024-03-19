@@ -23,22 +23,7 @@
 
 @include('layouts.menuburger')
 
-<div class="menu">
-    <a href="javascript:;" class="closem">
-    </a>
-    <nav>
-        <img src="{{ asset('images') . '/' . Auth::user()->photo }}" alt="Photo">
-        <h4>{{ Auth::user()->fullname }}</h4>
-        <h5>{{ Auth::user()->role }}</h5>
-        <form action="{{ route('logout') }}" method="post">
-            <button class="closes">Log Out</button>
-            @csrf
-        </form>
-    </nav>
-</div>
-
-
-    <header class="nav level-0">
+    <header class="nav level-1">
         <a href="">
             <img src="{{asset ('images/ico-back.svg')}}" alt="back">
         </a>
@@ -46,11 +31,11 @@
         <img src="{{asset('images/logo.svg')}} " width="200px" alt="Logo">
        
         <a href="javascript:;" class="mburger">
-            <img src="{{asset('images/burger.svg')}}" alt="Hamburguer">
+            <img src="{{asset('images/burger.svg')}}" alt="">
         </a>
     </header>
 
-
+    <section class="module">
     <section class="dashboard">
         <h1>Dashboard: Admin</h1>
         <menu>
@@ -76,7 +61,7 @@
             </ul>
         </menu>
     </section>
-
+    </section>
 @endsection
 
 @section('js')
